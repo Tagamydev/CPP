@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/11 11:21:32 by samusanc         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:27:22 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	short_display(char *str)
 		std::cout << tmp;
 		i++;
 	}
-	while (i < 9)
+	while (i <= 9)
 	{
 		std::cout << " ";
 		i++;
 	}
 	if (str[i] >= 9)
 		std::cout << ".";
-	std::cout << " |";
+	std::cout << "\t|";
 }
 
 void	PhoneBook::search(void)
