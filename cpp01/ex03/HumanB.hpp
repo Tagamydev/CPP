@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:37:24 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 14:21:22 by samusanc         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:24:04 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef HUMBNB_HPP
+# define HUMBNB_HPP
 # include <iostream>
 # include <string>
 # include <Weapon.hpp>
 
 class  HumanB {
 	public:
-		void	attack();
-		void	setWeapon(Weapon newSword);
-		HumanB(std::string name);
+		HumanB(const std::string &name);
 		~HumanB();
+		void	setWeapon(const Weapon &weapon);
+		void	attack();
 	private:
-		Weapon*		weapon;
 		std::string	name;
+		Weapon*		weapon;
 };
 
 #endif

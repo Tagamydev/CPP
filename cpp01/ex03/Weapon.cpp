@@ -6,22 +6,23 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 14:24:31 by samusanc         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:05:34 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Weapon.hpp>
 
-const std::string& Weapon::getType() {
-  const std::string&	typ = &this->type;
-  return (typ);
+const std::string&	Weapon::getType() {
+	const std::string&	type = this->type;
+	return (type);
 }
 
-void	Weapon::setType(std::string type){
-  this->type = type;
+void Weapon::setType(const std::string &type)
+{
+	this->type = type;
 }
 
-Weapon::Weapon(std::stirng type) {
+Weapon::Weapon(const std::string &type) {
   this->type = type;
   std::cout << "Constructor Weapon called" << std::endl;
   return;
@@ -29,6 +30,5 @@ Weapon::Weapon(std::stirng type) {
 
 Weapon::~Weapon() {
   std::cout << "Destructor Weapon called" << std::endl;
-  std::cout << "Killing zombie: " << this->name << std::endl;
   return;
 }

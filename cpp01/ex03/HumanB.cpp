@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 14:23:06 by samusanc         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:24:43 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <HumanB.hpp>
 
+void HumanB::setWeapon(const Weapon &weapon) {
+  this->weapon = (Weapon *)&weapon;
+}
+
 void	HumanB::attack() {
   if (!this->weapon)
-  	std::cout << this-> << this->name << "attack with.. oh wait he can't attack :P, give him a weapon!!!" <<std::endl;
+  	std::cout << this->name << \
+	" attacks but... " << this->name << " don't have any weapon!!" << std::endl \
+	<< "maybe " << this->name << " is crazy..." << std::endl;
   else
-  	std::cout << this-> << this->name << "attack with " << this->weapon->getType() << std::endl;
+	std::cout << this->name << " attacks with their " \
+	<< this->weapon->getType() << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon newSword) {
-  this->weapon = &newSword;
-}
-
-HumanB::~HumanB(std::string name) {
+HumanB::HumanB(const std::string &name) {
   this->name = name;
   this->weapon = NULL;
-  std::cout << "Destructor HumanB called" << std::endl;
+  std::cout << "Constructor HumanB called" << std::endl;
   return;
 }
 
