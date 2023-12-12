@@ -6,19 +6,16 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2023/12/12 12:49:53 by samusanc         ###   ########.fr        #
+#    Updated: 2023/12/12 12:53:17 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Zombie
+NAME		=	brain
 CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX			=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp
-INC			=	./Zombie.hpp
 SRCS		=	$(MAIN) \
-				zombieHorde.cpp \
-				Zombie.cpp \
 
 O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))

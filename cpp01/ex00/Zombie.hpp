@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   classi.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/11 20:47:25 by samusanc         ###   ########.fr       */
+/*   Created: 2023/12/11 08:37:24 by samusanc          #+#    #+#             */
+/*   Updated: 2023/12/12 12:46:08 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ClassZombie.hpp>
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+# include <iostream>
+# include <string>
 
-Zombie::Zombie(std::string newz) {
-	this->name = newz;
-	std::cout << "Constructor Zombie called" << std::endl;
-	return;
-}
+class  Zombie {
+	public:
+		void	announce(void);
+    	Zombie(std::string newz);
+    	~Zombie();
+	private:
+		std::string name;
+};
 
-void	Zombie::announce() {
-  std::cout << this->name << ": BraiiiiiiinnnzzzZ..." <<std::endl;
-}
+Zombie* newZombie( std::string name );
+void randomChump( std::string name );
 
-Zombie::~Zombie() {
-  std::cout << "Destructor Zombie called" << std::endl;
-  std::cout << "Killing zombie: " << this->name << std::endl;
-  return;
-}
+#endif
