@@ -6,7 +6,7 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2023/12/11 20:39:05 by samusanc         ###   ########.fr        #
+#    Updated: 2023/12/12 12:47:13 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX			=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp
-INC			=	./ClassZombie.hpp ./Zombie.hpp
+INC			=	./Zombie.hpp
 SRCS		=	$(MAIN) \
 				./newZombie.cpp \
 				./randomChump.cpp \
+				./Zombie.cpp \
 
 O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))
