@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 13:12:48 by samusanc         ###   ########.fr       */
+/*   Created: 2023/12/11 08:37:24 by samusanc          #+#    #+#             */
+/*   Updated: 2023/12/13 21:35:10 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef HARL_HPP
+# define HARL_HPP
+# include <iostream>
+# include <string>
 
-int  main()
-{
-	std::string	brain = "HI THIS IS BRAIN";
-	std::string*	stringPTR = &brain;
-	std::string&	stringREF = brain;
+class  Harl {
+	public:
+    	Harl();
+    	~Harl();
+		void complain(std::string level);
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+		std::string name;
+};
 
-	std::cout << "adress memory of brain" << &brain << std::endl;
-	std::cout << "adress memory of stringPTR" << stringPTR << std::endl;
-}
+#endif
