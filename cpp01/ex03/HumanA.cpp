@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   Ay: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 21:24:26 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/08 20:20:32 by samusanc          #+#    #+#             */
+/*   Updated: 2024/01/11 20:56:39 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <HumanA.hpp>
 
-void	HumanA::attack() {
+HumanA::HumanA( const std::string &name, Weapon &weapon ) {
+	this->name = name;
+	this->weapon = &weapon;
+	std::cout << "HumanA borning" << std::endl;
+}
+
+HumanA::HumanA( const char *name, Weapon &weapon ) {
+	if (name == nullptr)
+		this->name = "default hero";
+	else
+		this->name = name;
+	this->weapon = &weapon;
+	std::cout << "HumanA borning" << std::endl;
+}
+
+HumanA::~HumanA( void ) {
+	std::cout << "HumanA dying" << std::endl;
+}
+
+void	HumanA::setWeapon( Weapon &weapon ) {
+	this->weapon = &weapon;
+}
+
+void	HumanA::attack( void ) {
 	std::cout << this->name << " attacks with their " \
-	<< this->weapon.getType() << std::endl;
-}
-
-HumanA::HumanA(const std::string &name, Weapon &weaponREF) : weapon(weaponREF) {
-  this->name = name;
-  std::cout << "Constructor HumanA called" << std::endl;
-  return;
-}
-
-HumanA::~HumanA() {
-  std::cout << "Destructor HumanA called" << std::endl;
-  return;
+	<< this->weapon->getType() << std::endl;
 }

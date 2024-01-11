@@ -5,30 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:43:06 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 21:05:34 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/10 20:46:49 by samusanc          #+#    #+#             */
+/*   Updated: 2024/01/11 20:27:21 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Weapon.hpp>
 
-const std::string&	Weapon::getType() {
-	const std::string&	type = this->type;
-	return (type);
+Weapon::Weapon( const std::string& weapon ) {
+	this->type = weapon;
+	std::cout << "crafting Weapon" << std::endl;
 }
 
-void Weapon::setType(const std::string &type)
-{
-	this->type = type;
-}
-
-Weapon::Weapon(const std::string &type) {
-  this->type = type;
-  std::cout << "Constructor Weapon called" << std::endl;
-  return;
+Weapon::Weapon( const char *weapon ) {
+	if (weapon == nullptr)
+		this->type = "default weapon";
+	else
+		this->type = weapon;
+	std::cout << "crafting Weapon" << std::endl;
 }
 
 Weapon::~Weapon() {
-  std::cout << "Destructor Weapon called" << std::endl;
-  return;
+	std::cout << "destroying Weapon" << std::endl;
+}
+
+const std::string	&Weapon::getType( void )
+{
+	const	std::string	&result = this->type;
+	return (result);
+}
+
+void	Weapon::setType( const std::string& type ) {
+	this->type = type;
+}
+
+void	Weapon::setType( const char *type ) {
+	if (type != nullptr)
+		this->type = type;
 }

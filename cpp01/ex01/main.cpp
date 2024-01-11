@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/11 21:24:39 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:33:07 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int  main()
 {
-	Zombie*	horde = zombieHorde(42, "hola");
+	Zombie guy = Zombie();
 
-	if (!horde)
-		std::cout << "error" << std::endl;
-	horde->announce();
-	delete [] horde;
+	guy.announce();
 }

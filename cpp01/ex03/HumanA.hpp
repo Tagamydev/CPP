@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:37:24 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 21:23:49 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
+/*   Updated: 2024/01/11 20:56:37 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
+#ifndef	HUMANA_HPP
 # define HUMANA_HPP
-# include <iostream>
 # include <string>
+# include <iostream>
 # include <Weapon.hpp>
 
-class  HumanA {
+class	HumanA {
 	public:
-		HumanA(const std::string &name, Weapon &weapon);
-		~HumanA();
-		void	attack();
+		HumanA( const std::string &name, Weapon &weapon );
+		HumanA( const char *name, Weapon &weapon );
+		~HumanA( void );
+		void	attack( void );
+		void	setWeapon( Weapon &weapon );
 	private:
-		std::string		name;
-		Weapon			&weapon;
+		std::string			name;
+		Weapon				*weapon;
 };
 
 #endif

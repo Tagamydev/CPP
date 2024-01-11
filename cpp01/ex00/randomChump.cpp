@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 20:23:23 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 12:46:55 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/08 20:59:55 by samusanc          #+#    #+#             */
+/*   Updated: 2024/01/08 21:00:51 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Zombie.hpp>
 
-void	randomChump(std::string name)
+void	randomChump( std::string name )
 {
-	Zombie	z = Zombie(name);
-
-	z.announce();
-	return;
+	Zombie	hola = Zombie(name);
+	hola.announce();
 }
+

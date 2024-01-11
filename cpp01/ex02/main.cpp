@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 13:21:29 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/10 20:04:07 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 
 int  main()
 {
-	std::string	brain = "HI THIS IS BRAIN";
-	std::string*	stringPTR = &brain;
-	std::string&	stringREF = brain;
+	std::string	string = "HI THIS IS BRAIN";
+	std::string	*stringPTR = &string;
+	std::string	&stringREF = string;
 
-	std::cout << "adress memory of brain " << &brain << std::endl;
-	std::cout << "adress memory of stringPTR " << stringPTR << std::endl;
-	std::cout << "adress memory of stringREF " << &stringREF << std::endl;
-	std::cout << "value of brain " << brain << std::endl;
-	std::cout << "value of stirngPTR " << *stringPTR << std::endl;
-	std::cout << "value of stirngREF " << stringREF << std::endl;
+	std::cout << &stringREF << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &string << std::endl;
+
+	std::cout << stringREF << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << string << std::endl;
+
 }

@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/11 20:49:01 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/08 21:02:11 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int  main()
 {
-	randomChump("hola");
-	Zombie* hello = newZombie("adeu");
-	delete hello;
+	randomChump("zeze");
+	Zombie *hola;
+	
+	hola = newZombie("alloc");
+	hola->announce();
+	delete hola;
 }

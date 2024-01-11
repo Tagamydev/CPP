@@ -5,22 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:37:24 by samusanc          #+#    #+#             */
-/*   Updated: 2023/12/12 21:05:47 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/10 20:39:47 by samusanc          #+#    #+#             */
+/*   Updated: 2024/01/11 20:23:06 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
+#ifndef	WEAPON_HPP
 # define WEAPON_HPP
 # include <iostream>
 # include <string>
 
-class  Weapon {
+class	Weapon {
 	public:
-		Weapon(const std::string &type);
-		~Weapon();
-		const std::string&	getType();
-		void				setType(const std::string &type);
+		Weapon( const std::string& weapon );
+		Weapon( const char *weapon );
+		~Weapon( void );
+		const std::string	&getType( void );
+		void				setType( const std::string &type );
+		void				setType( const char *type );
 	private:
 		std::string	type;
 };
