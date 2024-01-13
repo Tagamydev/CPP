@@ -6,15 +6,14 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/01/09 20:33:07 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:24:44 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Zombie.hpp>
+#include <Harl.hpp>
 
 int  main()
 {
-	Zombie guy = Zombie();
-
-	guy.announce();
+	Harl	harl = Harl();
+	harl.complain(NULL);
 }
