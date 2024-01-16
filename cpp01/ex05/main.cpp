@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/01/13 17:24:44 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/16 20:04:09 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int  main()
 {
 	Harl	harl = Harl();
-	harl.complain(NULL);
+	harl.complain();
 }
