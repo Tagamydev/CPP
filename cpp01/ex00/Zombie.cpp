@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:20:32 by samusanc          #+#    #+#             */
-/*   Updated: 2024/01/16 20:31:33 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:53:51 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ Zombie::Zombie( const char *name ) {
 }
 
 Zombie::~Zombie( void ) {
-	std::cout << "Zombie dying" << std::endl;
+	std::cout << "Zombie name: " << this->name << " is dying" << std::endl;
 }

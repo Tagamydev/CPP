@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:20:32 by samusanc          #+#    #+#             */
-/*   Updated: 2024/01/17 19:47:02 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:58:35 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Zombie::Zombie(void) {
 }
 
 Zombie::~Zombie(void) {
-  std::cout << "Zombie dying" << std::endl;
+  std::cout << "Zombie name: " << this->name << " is dying" << std::endl;
 }
 
 void Zombie::coronation(std::string name) {

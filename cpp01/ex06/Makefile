@@ -6,11 +6,11 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/01/13 17:25:12 by samusanc         ###   ########.fr        #
+#    Updated: 2024/01/22 19:59:26 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Harl
+NAME		=	harlFilter
 CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX			=	c++ $(CXXFLAGS)
