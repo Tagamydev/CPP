@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/04 21:20:42 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/04 21:52:22 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,9 @@ class	Class{
 		/* Constructor */
 		Class(void);
 		/* Copy Constructor */
-		Class(Class copy);
+		Class(const Class& other);
 		/* Copy assignment operator overload */
-		Class& operator = (const MyClass& other)
-		{
-			/*
-			Autoasignation controler
-			if (this != &other)
-			{
-				//code here
-			}
-			*/
-			return (this*);
-		}
+		Class& operator = (const Class& other);
 		/* Destructor */
 		~Class(void);
 
