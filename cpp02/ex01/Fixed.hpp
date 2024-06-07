@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/07 22:56:37 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/07 21:57:16 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class	Fixed{
 	/* Orthodox Canonical Form Requirements */
 		/* Constructor */
 		Fixed(void);
+		/* Float Constructor */
+		Fixed(const float value);
+		/* Int Constructor */
+		Fixed(const int value);
 		/* Copy Constructor */
 		Fixed(const Fixed& other);
 		/* Destructor */
@@ -32,11 +36,38 @@ class	Fixed{
 	/* Operators Overload */
 		/* Copy Assignment Operator */
 		Fixed&	operator = (const Fixed& other);
+		/* Insertion Operator */
+		friend std::ostream& operator<<(std::ostream&, const Fixed& other);
+		/* Comparison Operators */
+		bool	operator > (const Fixed& other);
+		bool	operator < (const Fixed& other);
+		bool	operator >= (const Fixed& other);
+		bool	operator <= (const Fixed& other);
+		bool	operator == (const Fixed& other);
+		bool	operator != (const Fixed& other);
+		/* Arithmetic Operators */
+		Fixed	operator + (const Fixed& other);
+		Fixed	operator - (const Fixed& other);
+		Fixed	operator * (const Fixed& other);
+		Fixed	operator / (const Fixed& other);
 
-	/* Funtions */
+		/* Increment/Decrement Operators */
+		Fixed	operator ++ (int);
+		Fixed	operator ++ ();
+		Fixed	operator -- (int);
+		Fixed	operator -- ();
+
 		/* other funtions here */
 		int	getRawBits(void) const;
 		void	setRawBits(int const raw);
+		float	toFloat(void);
+		int	toInt(void);
+		/* ex02 funtions */
+		static Fixed&	min(Fixed& a, Fixed& b);
+		static Fixed&	min(const Fixed& a, const Fixed& b);
+		static Fixed&	max(Fixed& a, Fixed& b);
+		static Fixed&	max(const Fixed& a, const Fixed& b);
+
 
 	/* here every private statement */
 	private:
