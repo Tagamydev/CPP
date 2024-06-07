@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 21:13:44 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/07 22:08:30 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/07 23:10:42 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <Fixed.hpp>
@@ -14,7 +14,7 @@
 // Default constructor
 Fixed::Fixed(void)
 {
-	//std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 }
 
@@ -22,13 +22,13 @@ Fixed::Fixed(void)
 Fixed::Fixed(const Fixed& copy)
 {
 	this->value = copy.getRawBits();
-	//std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 Fixed&	Fixed::operator=(const Fixed& other)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->value = other.getRawBits();
@@ -167,16 +167,18 @@ Fixed::Fixed(const int other)
 // destructor
 Fixed::~Fixed(void)
 {
-	//std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 void	Fixed::setRawBits(int const raw)
 {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw;
 }
 
 int	Fixed::getRawBits(void) const
 {
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->value);
 }
 
@@ -186,6 +188,16 @@ float	Fixed::toFloat(void)
 }
 
 int	Fixed::toInt(void)
+{
+	return ((this->value) / (1 << this->bits));
+}
+
+float	Fixed::toFloat(void) const
+{
+	return (static_cast<float>(this->value) / (1 << this->bits));
+}
+
+int	Fixed::toInt(void) const
 {
 	return ((this->value) / (1 << this->bits));
 }

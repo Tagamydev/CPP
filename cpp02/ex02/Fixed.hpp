@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/07 21:57:16 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/07 23:11:31 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ class	Fixed{
 		void	setRawBits(int const raw);
 		float	toFloat(void);
 		int	toInt(void);
+		float	toFloat(void) const;
+		int	toInt(void) const;
+
 		/* ex02 funtions */
 		static Fixed&	min(Fixed& a, Fixed& b);
 		static Fixed&	min(const Fixed& a, const Fixed& b);
