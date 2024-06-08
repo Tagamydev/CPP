@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 21:13:44 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/08 19:03:54 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 19:33:02 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <ClapTrap.hpp>
@@ -75,10 +75,10 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << this->name << " take " << amount << " damage points!" << std::endl;
 		this->hitPoints -= amount;
 		if (this->hitPoints <= 0)
-			std::cout << this->name << "is dead!" << std::endl;
+			std::cout << this->name << " is dead!" << std::endl;
 	}
 	else if (this->hitPoints <= 0)
-		std::cout << this->name << "is already dead!!" << std::endl;
+		std::cout << this->name << " is already dead!!" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)

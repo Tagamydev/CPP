@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 21:13:44 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/08 19:03:26 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 19:30:01 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ScavTrap.hpp>
+#include <FragTrap.hpp>
 
 // Default constructor
-ScavTrap::ScavTrap(std::string title)
+FragTrap::FragTrap(std::string title)
 {
-	std::cout << "ScavTrap Default constructor called" << std::endl;
+	std::cout << "FragTrap Default constructor called" << std::endl;
 	this->name = title;
 	this->hitPoints = 100;
 	this->energyPoints = 50;
@@ -22,9 +22,9 @@ ScavTrap::ScavTrap(std::string title)
 }
 
 // Copy assignment operator
-ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
+FragTrap&	FragTrap::operator=(const FragTrap& other)
 {
-	std::cout << "ScavTrap Copy assignment operator called" << std::endl;
+	std::cout << "FragTrap Copy assignment operator called" << std::endl;
 	// Check that it is not assigning to itself
 	if (this != &other)
 	{
@@ -37,32 +37,22 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
 }
 
 // Copy constructor
-ScavTrap::ScavTrap(const ScavTrap& copy)
+FragTrap::FragTrap(const FragTrap& copy)
 {
 	*this = copy;
-	std::cout << "ScavTrap copy constructor called" << std::endl;
+	std::cout << "FragTrap copy constructor called" << std::endl;
 }
 
 // destructor
-ScavTrap::~ScavTrap(void)
+FragTrap::~FragTrap(void)
 {
-	std::cout << "ScavTrap(" << this->name << ")destructor called" << std::endl;
+	std::cout << "FragTrap(" << this->name << ")destructor called" << std::endl;
 }
 
-void	ScavTrap::attack(const std::string& target)
-{
-	if (this->energyPoints > 0)
-	{
-		std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->hitPoints << " points of damage!" << std::endl;
-		std::cout << "Also I'm aware of my individuality!!!." << std::endl;
-		this->energyPoints--;
-	}
-}
-
-void	ScavTrap::guardGate(void)
+void	FragTrap::highFivesGuys(void)
 {
 	if (this->hitPoints > 0)
-		std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode." << std::endl;
+		std::cout << "*FragTrap " << this->name << " displays a positive high fives request *" << std::endl;
 	else if (this->hitPoints <= 0)
-		std::cout << "\"Of the dead nothing but good is to be said.\"" << std::endl << "\t\t\t-Chilon of Sparta" << std::endl;
+		std::cout << "\"No high Fives to the dead\"" << std::endl << "\t\t\t-Chilon of Sparta" << std::endl;
 }

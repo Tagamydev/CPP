@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/08 05:35:29 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 19:30:30 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef	FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 # include <string>
 # include <iostream>
+# include <ClapTrap.hpp>
 
-class	ClapTrap{
+class	FragTrap : public ClapTrap{
 	/* here every public statement */
 	public:
 		/* Constructor */
-		ClapTrap(void);
-		/* Overload Constructor */
-		ClapTrap(std::string title);
+		FragTrap(std::string title);
 		/* Copy Constructor */
-		ClapTrap(const ClapTrap& other);
+		FragTrap(const FragTrap& other);
 		/* Copy assignment operator overload */
-		ClapTrap& operator = (const ClapTrap& other);
+		FragTrap& operator = (const FragTrap& other);
 		/* Destructor */
-		~ClapTrap(void);
-
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-	/* here every private statement */
-	private:
-		std::string	name;
-		int		hitPoints;
-		int		energyPoints;
-		int		attackDamage;
+		~FragTrap(void);
+		void	highFivesGuys(void);
 };
 
 #endif
