@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/09 01:41:02 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 23:12:59 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Animal{
 		virtual ~Animal(void);
 		
 		/* Other funtions */
-		virtual void	makeSound(void) const = 0;
+		virtual void	makeSound(void) const;
 		std::string	getType(void) const;
 	/* here every private statement */
 	protected:

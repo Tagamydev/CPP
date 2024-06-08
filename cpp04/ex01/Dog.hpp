@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/09 01:41:02 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/09 00:14:09 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef	DOG_HPP
+# define DOG_HPP
 # include <string>
 # include <iostream>
+# include <Animal.hpp>
+# include <Brain.hpp>
 
-class	Animal{
+class	Dog : public Animal{
 	/* here every public statement */
 	public:
 		/* Default Constructor */
-		Animal(void);
+		Dog(void);
 		/* Copy Constructor */
-		Animal(const Animal& other);
+		Dog(const Dog& other);
 		/* Copy assignment operator overload */
-		Animal& operator = (const Animal& other);
+		Dog& operator = (const Dog& other);
 		/* Destructor */
-		virtual ~Animal(void);
-		
-		/* Other funtions */
-		virtual void	makeSound(void) const = 0;
-		std::string	getType(void) const;
-	/* here every private statement */
-	protected:
-		std::string	type;
+		~Dog(void);
+		virtual void	makeSound(void) const;
+	private:
+		Brain*	brain;
 };
 
 #endif

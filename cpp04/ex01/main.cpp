@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/09 01:41:28 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/09 00:45:52 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 int	main()
 {
 	std::cout << "Start test" << std::endl;
+	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
@@ -34,6 +35,8 @@ int	main()
 
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
+	meta->makeSound();
+	delete meta;
 	delete i;
 	delete j;
 	//----------------------------------------------//

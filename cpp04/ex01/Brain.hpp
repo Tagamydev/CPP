@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/09 01:41:02 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 23:52:13 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef	BRAIN_HPP
+# define BRAIN_HPP
 # include <string>
 # include <iostream>
 
-class	Animal{
+class	Brain{
 	/* here every public statement */
 	public:
 		/* Default Constructor */
-		Animal(void);
+		Brain(void);
 		/* Copy Constructor */
-		Animal(const Animal& other);
+		Brain(const Brain& other);
 		/* Copy assignment operator overload */
-		Animal& operator = (const Animal& other);
+		Brain& operator = (const Brain& other);
 		/* Destructor */
-		virtual ~Animal(void);
-		
-		/* Other funtions */
-		virtual void	makeSound(void) const = 0;
-		std::string	getType(void) const;
-	/* here every private statement */
-	protected:
-		std::string	type;
+		~Brain(void);
+		std::string ideas[100];
 };
 
 #endif
