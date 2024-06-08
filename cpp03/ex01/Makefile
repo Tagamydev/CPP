@@ -6,7 +6,7 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/06/08 04:30:06 by samusanc         ###   ########.fr        #
+#    Updated: 2024/06/08 05:26:25 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,12 @@ CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX		=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp \
-			./ClapTrap.cpp
+			./ClapTrap.cpp \
+			./ScavTrap.cpp
 
-INC		=	./ClapTrap.hpp
+INC		=	./ClapTrap.hpp \
+			./ScavTrap.hpp
+
 SRCS		=	$(MAIN)
 O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))

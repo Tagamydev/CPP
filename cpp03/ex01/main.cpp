@@ -6,17 +6,17 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/08 05:10:14 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 05:36:33 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
-#include <ClapTrap.hpp>
+#include <ScavTrap.hpp>
 
 int	main()
 {
-	ClapTrap a = ClapTrap("name aaaaa");
+	ScavTrap a = ScavTrap("name aaaaa");
 	
 	a.attack("bebe");
 	a.takeDamage(9);

@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/08 05:09:03 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/08 05:37:03 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class	ClapTrap{
 	/* here every public statement */
 	public:
 		/* Constructor */
+		ClapTrap(void);
+		/* Overload Constructor */
 		ClapTrap(std::string title);
 		/* Copy Constructor */
 		ClapTrap(const ClapTrap& other);
@@ -30,8 +32,9 @@ class	ClapTrap{
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-	/* here every private statement */
-	private:
+
+	/* here every private statement accessible from derived object*/
+	protected:
 		std::string	name;
 		int		hitPoints;
 		int		energyPoints;
