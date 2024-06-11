@@ -6,7 +6,7 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/06/04 21:22:42 by samusanc         ###   ########.fr        #
+#    Updated: 2024/06/11 00:04:58 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))
 
 $(O_DIR)/%.o: %.cpp
-	@mkdir -p $(@D)
-	@$(CXX) -c $< -o $(O_DIR)/$(<:.cpp=.o)
+	mkdir -p $(@D)
+	$(CXX) -c $< -o $(O_DIR)/$(<:.cpp=.o)
 
 all: $(NAME) $(SRCS)
 
 $(NAME): $(OBJS) $(INC)
-	@$(CXX) $(OBJS) -o $(NAME)
+	$(CXX) $(OBJS) -o $(NAME)
 
 re: fclean all
 
