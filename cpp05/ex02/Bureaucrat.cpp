@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:45:14 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/14 20:15:37 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/14 20:10:51 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	Bureaucrat::decrementGrade()
 		throw	GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
@@ -79,9 +79,23 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch (std::exception& e)
 	{
-		std::cout << this->name <<  " couldn’t sign " << form.getName() << " because " << e.what() <<std::endl;
+		std::cout << this->name <<  " couldn’t sign " << form.getName() << " because grade too low" <<std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->name <<  " executed " << form.getName() <<std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << this->name <<  " couldn’t execute " << form.getName() << " because "<< e.what() <<std::endl;
+	}
+}
+
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat& other)
 {
