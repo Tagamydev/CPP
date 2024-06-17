@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:45:14 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 02:53:54 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:52:25 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 
 }
 
+AForm* RobotomyRequestForm::clone() const
+{
+	return (new RobotomyRequestForm(this->target));
+}

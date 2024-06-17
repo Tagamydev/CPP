@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 02:47:52 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:47:12 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ class	AForm{
 		void		beSigned(const Bureaucrat& bureaucrat);
 
 		virtual void execute(Bureaucrat const & executor) const = 0;
+
+		virtual	AForm*	clone() const = 0;
 
 		// exception handle
 		class	GradeTooHighException : public std::exception {

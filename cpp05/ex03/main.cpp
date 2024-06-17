@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 02:55:15 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:46:55 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <ShrubberyCreationForm.hpp>
 #include <RobotomyRequestForm.hpp>
 #include <PresidentialPardonForm.hpp>
+#include <Intern.hpp>
 
 int	main()
 {
@@ -47,7 +48,6 @@ int	main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << anatomy <<std::endl;
 	aceu.executeForm(anatomy);
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -73,7 +73,6 @@ int	main()
 
 	anatomy.execute(Bureaucrat("tommy", 1));
 	anatomy.execute(Bureaucrat("tommy", 1));
-	std::cout << anatomy <<std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
 	aceu.executeForm(anatomy);
@@ -90,6 +89,28 @@ int	main()
 	}
 
 	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	
+		std::cout << "New test1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+	Intern	cousing = Intern();
+	
+	AForm	*testp = cousing.makeForm("robotomy request", "my papa");
+	std::cout << *testp <<std::endl;
+	delete	testp;
+
+	testp = cousing.makeForm("presidental pardon request", "my dada");
+	std::cout << *testp <<std::endl;
+	delete	testp;
+
+	testp = cousing.makeForm("Shrubbery Creation request", "my dada");
+	std::cout << *testp <<std::endl;
+	delete	testp;
+
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;

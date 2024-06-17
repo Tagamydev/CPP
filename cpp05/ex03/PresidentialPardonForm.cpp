@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:45:14 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 02:53:35 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:53:12 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,7 @@ void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
 
 }
 
+AForm* PresidentialPardonForm::clone() const
+{
+	return (new PresidentialPardonForm(this->target));
+}

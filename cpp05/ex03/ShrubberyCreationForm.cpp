@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:45:14 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 02:54:15 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:52:50 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,3 +125,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 		throw	FormNotSignedException();
 }
 
+AForm* ShrubberyCreationForm::clone() const
+{
+	return (new ShrubberyCreationForm(this->target));
+}
