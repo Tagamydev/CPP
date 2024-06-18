@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/18 04:13:46 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:41:37 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 class	ScalarConvert{
 	/* here every public statement */
 	public:
-		/* Copy Constructor */
-		ScalarConvert(const ScalarConvert& other);
 		/* Copy assignment operator overload */
 		ScalarConvert& operator = (const ScalarConvert& other);
 		/* Destructor */
@@ -84,6 +82,8 @@ class	ScalarConvert{
 	private:
 		/* Constructor */
 		ScalarConvert(void);
+		/* Copy Constructor */
+		ScalarConvert(const ScalarConvert& other);
 };
 
 #endif

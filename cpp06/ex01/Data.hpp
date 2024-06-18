@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/18 20:44:39 by samusanc         ###   ########.fr       */
+/*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
+/*   Updated: 2024/06/18 20:44:06 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include "Data.hpp"
-#include "Serializer.hpp"
+#ifndef	DATA_HPP
+# define DATA_HPP
+# include <string>
+# include <iostream>
 
-int	main()
-{
-	Data	hello;
+struct	Data{
+	int	member;
+};
 
-	hello.member = 777;
-
-	Data	*adeu = Serializer::deserialize(Serializer::serialize(&hello));
-	std::cout << adeu->member << std::endl;
-}
+#endif

@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassPref.hpp                                      :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/04 21:52:22 by samusanc         ###   ########.fr       */
+/*   Created: 2024/06/18 20:04:50 by samusanc          #+#    #+#             */
+/*   Updated: 2024/06/18 20:42:15 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "Serializer.hpp"
 
-#ifndef	CLASS_HPP
-# define CLASS_HPP
-# include <string>
-# include <iostream>
+Serializer::Serializer(){}
+Serializer::~Serializer(){}
 
-class	Class{
-	/* here every public statement */
-	public:
-		/* Constructor */
-		Class(void);
-		/* Copy Constructor */
-		Class(const Class& other);
-		/* Copy assignment operator overload */
-		Class& operator = (const Class& other);
-		/* Destructor */
-		~Class(void);
+uintptr_t	Serializer::serialize(Data* ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-	/* here every private statement */
-	private:
-};
+Data	*Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}
 
-#endif
+
