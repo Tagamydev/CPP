@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/17 18:25:20 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/18 04:13:46 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ class	ScalarConvert{
 
 		virtual void	test() const = 0;
 
-		static void	convertToChar(const std::string& str);
-		static void	convertToInt(const std::string& str);
-		static void	convertToFloat(const std::string& str);
-		static void	convertToDouble(const std::string& str);
+		static long double	stringToLongDouble(const std::string& str);
+		static long double	checkFloat(const std::string& str);
+		static long double	checkString(const std::string& str);
+		static void		exceptionsNaN(const std::string& str);
+
+
+		static char	convertToChar(const std::string& str);
+		static int	convertToInt(const std::string& str);
+		static float	convertToFloat(const std::string& str);
+		static double	convertToDouble(const std::string& str);
 
 		class	impossibleException : public std::exception {
 			public:
@@ -49,7 +55,7 @@ class	ScalarConvert{
 				}
 		};
 
-		class	minusInffException : public std::exception {
+		class	minusInfException : public std::exception {
 			public:
 				virtual const char* what() const throw()
 				{
@@ -57,11 +63,19 @@ class	ScalarConvert{
 				}
 		};
 
-		class	inffException : public std::exception {
+		class	infException : public std::exception {
 			public:
 				virtual const char* what() const throw()
 				{
 					return ("inf");
+				}
+		};
+
+		class	noDisException : public std::exception {
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Non displayable");
 				}
 		};
 
