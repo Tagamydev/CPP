@@ -6,163 +6,103 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:20:19 by samusanc          #+#    #+#             */
-/*   Updated: 2024/06/18 05:34:26 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/06/19 02:44:26 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConvert.hpp"
-#include <cstdlib>
-#include <cstring>
-#include <cerrno>
-#include <limits.h>
-#include <limits>
+#include <float.h>
+#include <cmath>
+#include <iomanip>
 
 ScalarConvert::ScalarConvert(){}
 
 ScalarConvert::~ScalarConvert(){}
 
-ScalarConvert::ScalarConvert(const ScalarConvert& other){*this = other;}
-
-ScalarConvert&	ScalarConvert::operator=(const ScalarConvert& other)
+void	toDouble(const std::string& str)
 {
-	int i = 0;
+	double	tmp;
 
-	if (this != &other)
-		i++;
-	return(*this);
-}
-
-long double	ScalarConvert::stringToLongDouble(const std::string& str)
-{
-	char		*e;
-	const char	*val = str.c_str();
-	errno = 0;
-	long double result = std::strtold(val, &e);
-
-	if (*e != '\0' || errno != 0)
+	std::cout << "double: ";
+	try
 	{
-		throw	impossibleException();
+		tmp = Cheat::convertToDouble(str);
+		if (static_cast<int>(tmp * 10) % 10 == 0)
+			std::cout << std::setprecision(1) << std::fixed  << tmp;
+		else
+			std::cout << tmp;
 	}
-	return (result);
-}
-
-long double	ScalarConvert::checkFloat(const std::string& str)
-{
-	int	i = 0;
-	int	f = 0;
-	int	point = 0;
-	int	sign = 0;
-
-	while (i != (int)(str.length()))
+	catch(std::exception& e)
 	{
-		if (!isdigit(str[i]))
-		{
-			if ((str[i] == '-' || str[i] == '+') && i == 0)
-				sign++;
-			else if (str[i] == '-' || str[i] == '+')
-			{
-				throw impossibleException();
-			}
-			if (str[i] == '.' && i != (int)(str.length() - 1))
-				point++;
-			else if (str[i] == '.')
-			{
-				throw impossibleException();
-			}
-			if (str[i] == 'f' && i == (int)(str.length() - 1) && i != 0)
-				f++;
-			else if (str[i] == 'f')
-			{
-				throw impossibleException();
-			}
-		}
-		i++;
+		std::cout << e.what();
 	}
-	if (f > 1 || point > 1 || sign > 1)
+	std::cout << std::endl;
+}
+
+void	toFloat(const std::string& str)
+{
+	float	tmp;
+
+	std::cout << "float: ";
+	try
 	{
-		throw impossibleException();
+		tmp = Cheat::convertToFloat(str);
+		if (static_cast<int>(tmp * 10) % 10 == 0)
+			std::cout << std::setprecision(1)<< std::fixed  << tmp << "f";
+		else
+			std::cout << tmp << "f";
 	}
-	if (f != 0)
-		return (stringToLongDouble(static_cast<std::string>(str).erase(static_cast<std::string>(str).find("f", 0))));
-	return (stringToLongDouble(str));
-}
-
-long double	ScalarConvert::checkString(const std::string& str)
-{
-	if (str.length() == 1)
+	catch(std::exception& e)
 	{
-		return (checkFloat(&str[0]));
+		std::string	tmpS = e.what();
+
+		if (tmpS.compare("impossible") == 0)
+			std::cout << e.what();
+		else
+			std::cout << e.what() << "f";
 	}
-	else
+	std::cout << std::endl;
+}
+
+void	toInt(const std::string& str)
+{
+	int	tmp;
+
+	std::cout << "int: ";
+	try
 	{
-		return (checkFloat(str));
+		tmp = Cheat::convertToInt(str);
+		std::cout << tmp;
 	}
-	return (1);
-}
-
-bool	compareNaN(const std::string& str)
-{
-	if (	str.compare("-inf") == 0 ||
-		str.compare("+inf") == 0 ||
-		str.compare("+inff") == 0 ||
-		str.compare("-inff") == 0 ||
-		str.compare("nan") == 0 ||
-		str.compare("nanf") == 0)
-		return (true);
-	return (false);
-}
-
-void	ScalarConvert::exceptionsNaN(const std::string& str)
-{
-	if (str.compare("-inf") == 0 || str.compare("-inff") == 0)
-		throw minusInfException();
-	if (str.compare("+inf") == 0 || str.compare("+inff") == 0)
-		throw infException();
-	if (str.compare("nan") == 0 || str.compare("nanf") == 0)
+	catch(std::exception& e)
 	{
-		throw nanException();
+		std::cout << e.what();
 	}
-	return ;
+	std::cout << std::endl;
 }
 
-char ScalarConvert::convertToChar(const std::string& str)
+
+void	toChar(const std::string& str)
 {
-	long double	tmp;
-
-	if (compareNaN(str))
-		throw impossibleException();
-	tmp = checkFloat(str);
-	if (tmp < 32 || tmp > 63)
-		throw noDisException();
-	return (static_cast<char>(tmp));
+	char	tmp;
+	std::cout << "char: ";
+	try
+	{
+		tmp = Cheat::convertToChar(str);
+		std::cout << "'" << tmp << "'";
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << std::endl;
 }
 
-int ScalarConvert::convertToInt(const std::string& str)
+void	ScalarConvert::convert(const std::string& hola)
 {
-	long double	tmp;
-
-	if (compareNaN(str))
-		throw impossibleException();
-	tmp = checkFloat(str);
-	if (tmp < INT_MIN || tmp > INT_MAX)
-		throw impossibleException();
-	return (static_cast<int>(tmp));
+	toChar(hola);
+	toInt(hola);
+	toFloat(hola);
+	toDouble(hola);
 }
 
-float ScalarConvert::convertToFloat(const std::string& str)
-{
-	long double	tmp;
-
-	exceptionsNaN(str);
-	tmp = checkFloat(str);
-	return (static_cast<float>(tmp));
-}
-
-double ScalarConvert::convertToDouble(const std::string& str)
-{
-	long double	tmp;
-
-	exceptionsNaN(str);
-	tmp = checkFloat(str);
-	return (static_cast<double>(tmp));
-}

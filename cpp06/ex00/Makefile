@@ -6,7 +6,7 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/06/17 17:31:00 by samusanc         ###   ########.fr        #
+#    Updated: 2024/06/19 02:45:54 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX		=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp
-INC		=	./ScalarConvert.hpp
+INC		=	./ScalarConvert.hpp \
+			./Cheat.hpp
 
 SRCS		=	$(MAIN) \
-			./ScalarConvert.cpp
+			./ScalarConvert.cpp \
+			./Cheat.cpp
 
 O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))
