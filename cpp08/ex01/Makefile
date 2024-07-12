@@ -6,7 +6,7 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/06/11 00:04:58 by samusanc         ###   ########.fr        #
+#    Updated: 2024/07/12 02:27:08 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ CXXFLAGS	=	-Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX		=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp
-INC		=	./ClassPref.hpp
-SRCS		=	$(MAIN)
+INC		=	./Span.hpp
+SRCS		=	$(MAIN) \
+			./Span.cpp
+
 O_DIR		=	./objects/
 OBJS		=	$(addprefix $(O_DIR)/, $(SRCS:.cpp=.o))
 
