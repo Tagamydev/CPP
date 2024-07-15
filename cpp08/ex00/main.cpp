@@ -6,14 +6,14 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/11 19:57:32 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:07:16 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
 #include <list>
-#include "Easyfind.hpp"
+#include "easyfind.hpp"
 
 int	main()
 {
@@ -27,10 +27,10 @@ int	main()
 	std::list<int>::iterator i = l.begin();
 
 	std::cout << *i << std::endl;
-	std::cout << *(easyfind(l, 4)) << std::endl;
+	std::cout << *(easyFind(l, 4)) << std::endl;
 	try
 	{
-		std::cout << *(easyfind(l, 10)) << std::endl;
+		std::cout << *(easyFind(l, 10)) << std::endl;
 	}
 	catch (const std::exception& e) 
 	{
