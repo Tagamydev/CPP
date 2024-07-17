@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/17 22:57:45 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/17 23:10:07 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ long double	checkFloat(const std::string str)
 
 void	ft_1(char *str)
 {
-	int	i;
+	int		i;
+	std::string	date;
 
 	i = 0;
 	str = strtok(str, " , ");
