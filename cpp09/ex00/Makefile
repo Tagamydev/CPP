@@ -6,12 +6,12 @@
 #    By: samusanc <samusanc@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 19:28:25 by samusanc          #+#    #+#              #
-#    Updated: 2024/07/16 20:52:13 by samusanc         ###   ########.fr        #
+#    Updated: 2024/07/18 19:22:34 by samusanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	btc
-CXXFLAGS	=	-Wall -Wextra -Werror -I ./
+CXXFLAGS	=	-g -Wall -Wextra -Werror -I ./
 CXXFLAGS	+=	-std=c++98
 CXX		=	c++ $(CXXFLAGS)
 MAIN		=	./main.cpp

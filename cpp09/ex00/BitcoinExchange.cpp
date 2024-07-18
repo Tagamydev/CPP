@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/17 23:10:07 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/18 20:40:41 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 #include <cstring>
 #include <cerrno>
 #include <limits.h>
-
-void	parseDate(char *str)
-{
-	(void)str;
-
-}
 
 long double	stringToLongDouble(std::string str)
 {
@@ -79,31 +73,225 @@ long double	checkFloat(const std::string str)
 	return (stringToLongDouble(str));
 }
 
-void	ft_1(char *str)
+void	checkNAD(char *str)//check numbers and dash
 {
-	int		i;
-	std::string	date;
+	int	i;
+	int	dash;
 
 	i = 0;
-	str = strtok(str, " , ");
-	if (!str)
+	dash = 0;
+	if (str[0] == '-')
+		throw std::out_of_range ("something wrong with the data base: date1");
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+		{
+			if (str[i] == '-')
+				dash++;
+			else
+				throw std::out_of_range ("something wrong with the data base: date2");
+		}
+		i++;
+	}
+	if (dash != 2)
+	{
+		throw std::out_of_range ("something wrong with the data base: date3");
+	}
+}
+
+int	limitDateChecker(char *str)
+{
+	long double	checker;
+	std::string tmp(str);
+	
+	checker = checkFloat(tmp);
+	if (checker > INT_MAX)
+		throw std::out_of_range ("something wrong with the data base: date");
+	return (static_cast<int>(checker));
+}
+
+void	checkDays(int month, int day)
+{
+	switch (month)
+	{
+		case 1:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 2:
+			if (day > 29)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 3:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 4:
+			if (day > 30)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 5:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 6:
+			if (day > 30)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 7:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 8:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 9:
+			if (day > 30)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 10:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 11:
+			if (day > 30)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+		case 12:
+			if (day > 31)
+				throw std::out_of_range ("something wrong with the date");
+			break ;
+	}
+}
+
+int	*checkEachDate(char *str)
+{
+	int		year;
+	int		month;
+	int		day;
+	int		i;
+	
+	i = 0;
+	year = 0;
+	month = 0;
+	day = 0;
+	str = strtok(str, "-");
+	while (str)
+	{
+		if (!i)
+		{
+			year = limitDateChecker(str);
+		}
+		else if (i == 1)
+		{
+			month = limitDateChecker(str);
+			if (month > 12 || month == 0)
+				throw std::out_of_range ("something wrong with the data base: date");
+		}
+		else if (i == 2)
+		{
+			day = limitDateChecker(str);
+			checkDays(month, day);
+		}
+		str = strtok(NULL, "-");
+		i++;
+	}
+	if (i != 3)
+		throw std::out_of_range ("something wrong with the data base: date3");
+	int		*date;
+
+	date = new int[3];
+	date[0] = year;
+	date[1] = month;
+	date[2] = day;
+	return (date);
+}
+
+int	*checkDate(char *date)
+{
+	int	*result;
+
+	result = NULL;
+	checkNAD(date);
+	result = checkEachDate(date);
+	return (result);
+}
+
+void	BitcoinExchange::parse_db(char *str)
+{
+	std::string	date;
+	std::string	value;
+	int		*d;
+	int		i;
+	float		v;
+
+	i = 0;
+	str = strtok(str, ",");
+	if (!str)//end of file
 		return ;
 	while (str)
 	{
-		std::cout << str << std::endl;
 		if (!i)
 		{
-			parseDate(str);
+			if (str)
+				date = std::string(str);
+			else
+				throw std::out_of_range ("something wrong with the data base: null");
 		}
 		else
 		{
-			std::cout << "el resto es:" << static_cast<int>(checkFloat(str)) << std::endl;
+			if (str)
+				value = std::string(str);
+			else
+				throw std::out_of_range ("something wrong with the data base: null");
+		}
+		str = strtok(NULL, ",");
+		i++;
+	}
+	if (i != 2)
+		throw std::out_of_range ("something wrong with the data base");
+	d = checkDate(const_cast<char *>(date.c_str()));
+	v = static_cast<float>(checkFloat(value));
+	db.insert(std::pair<int *, float>(d, v));
+}
+
+void	BitcoinExchange::parse_infile(char *str)
+{
+	std::string	date;
+	std::string	value;
+	int		*d;
+	int		i;
+	float		v;
+
+	i = 0;
+	str = strtok(str, " , ");
+	if (!str)//end of file
+		return ;
+	while (str)
+	{
+		if (!i)
+		{
+			if (str)
+				date = std::string(str);
+			else
+				throw std::out_of_range ("something wrong with the data base: null");
+		}
+		else
+		{
+			if (str)
+				value = std::string(str);
+			else
+				throw std::out_of_range ("something wrong with the data base: null");
 		}
 		str = strtok(NULL, " , ");
 		i++;
 	}
 	if (i != 2)
 		throw std::out_of_range ("something wrong with the data base");
+	d = checkDate(const_cast<char *>(date.c_str()));
+	v = static_cast<float>(checkFloat(value));
+	input.insert(std::pair<int *, float>(d, v));
 }
 
 BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
@@ -112,19 +300,17 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 	std::string	iN;
 
 	std::getline(dataBase, dataB);
-	if (dataB != "date,exchange_rate")
-		throw std::out_of_range ("something wrong with the data base");
+	if (dataB != "date,exchange_rate")//exception in case bad header of data base
+		throw std::out_of_range ("something wrong with the data base: bad header");
 	while (dataBase)
 	{
 		std::getline(dataBase, dataB);
-		ft_1(const_cast<char *>(dataB.c_str()));
+		parse_db(const_cast<char *>(dataB.c_str()));
 	}
 	while (in)
 	{
 		std::getline(in, iN);
-		//std::cout << iN << std::endl;
 	}
-
 }
 
 BitcoinExchange::~BitcoinExchange()

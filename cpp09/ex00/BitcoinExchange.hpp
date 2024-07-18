@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/17 20:07:29 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/18 20:42:18 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ class	BitcoinExchange{
 		/* Copy assignment operator overload */
 		BitcoinExchange& operator = (const BitcoinExchange& other);
 
-		std::map<std::string, float>	db;
-		std::map<std::string, float>	input;
+		void parse_db(char *str);
+		void parse_infile(char *str);
+
+		std::map<int *, float>	db;
+		std::map<int *, float>	input;
 };
 
 #endif
