@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/20 17:37:34 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:01:01 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ long double	checkFloat(const std::string str)
 		if (!isdigit(str[i]))
 		{
 			if ((str[i] == '-' || str[i] == '+') && i == 0)
+				sign++;
+			else if (str[i] == '-' || str[i] == '+')
 			{
-				throw std::out_of_range ("not a positive number.");
+				throw std::out_of_range ("Value: bad sign.");
 			}
 			if (str[i] == '.' && (i != (int)(str.length() - 1) || i != 0))
 				point++;
@@ -293,20 +295,8 @@ void	BitcoinExchange::parse_infile(char *str)
 		d = checkDate(const_cast<char *>(date.c_str()));
 		v = static_cast<float>(checkFloat(value));
 		if (v > 1000)
-		{
-			throw std::out_of_range ("too large number.");
-		}
-		std::cout << d[0] << "-";
- 		if (d[1] < 10)
-			std::cout << "0" << d[1];
-		else
-			std::cout << d[1];
- 		if (d[2] < 10)
- 			std::cout << "-" << "0" << d[2] << " => ";
-		else
- 			std::cout << "-" << d[2] << " => ";
-		std::cout << v << " = " <<  << std::endl;
-		delete [] d;
+		//input.insert(std::pair<int *, float>(d, v));
+		std::cout << "alabare alabare " << d << " " << v << std::endl;
 	}
 }
 
@@ -317,7 +307,7 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 
 	std::getline(dataBase, dataB);
 	if (dataB != "date,exchange_rate")//exception in case bad header of data base
-		throw std::out_of_range ("Data base: bad header.");
+		throw std::out_of_range ("Data base: bad header");
 	// Every exception produced in the data base is handle like an program error.
 	while (dataBase)
 	{
@@ -333,14 +323,14 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 	}
 	std::getline(in, iN);
 	if (iN != "date | value")//exception in case bad header of in file
-		throw std::out_of_range ("Input file: bad header.");
+		throw std::out_of_range ("something wrong with the input file: bad header");
 	// Every exception produced in the input is handle individually and not as an program error
 	while (in)
 	{
 		std::getline(in, iN);
 		try
 		{
-			parse_infile(const_cast<char *>(iN.c_str()));
+			parse_infile(const_cast<char *>(dataB.c_str()));
 		}
 		catch (const std::exception& e)
 		{

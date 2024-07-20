@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/18 17:43:11 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/20 16:10:53 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << "Error: too many arguments" << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		return (-1);
 	}
 
