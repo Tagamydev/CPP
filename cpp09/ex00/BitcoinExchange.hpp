@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/18 20:42:18 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:04:27 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class	BitcoinExchange{
 
 		void parse_db(char *str);
 		void parse_infile(char *str);
+		float	getAproxValue(int *date);
 
 		std::map<int *, float>	db;
 		std::map<int *, float>	input;

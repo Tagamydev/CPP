@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/20 17:37:34 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:13:01 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,40 @@ void	BitcoinExchange::parse_db(char *str)
 	db.insert(std::pair<int *, float>(d, v));
 }
 
+float	BitcoinExchange::getAproxValue(int *date)
+{
+	std::map<int *, float>::iterator	i = db.begin();
+	std::map<int *, float>::iterator	e = db.end();
+
+	while (i != e)
+	{
+		if (i->first[0] > date[0])
+		{
+			--i;
+			return (i->second);
+		}
+		else if (i->first[0] == date[0])
+		{
+			if (i->first[1] > date[1])
+			{
+				--i;
+				return (i->second);
+			}
+			else if (i->first[1] == date[1])
+			{
+				if (i->first[2] > date[2])
+				{
+					--i;
+					return (i->second);
+				}
+			}
+		}
+		i++;
+	}
+	--i;
+	return (i->second);
+}
+
 void	BitcoinExchange::parse_infile(char *str)
 {
 	if (str)
@@ -305,7 +339,7 @@ void	BitcoinExchange::parse_infile(char *str)
  			std::cout << "-" << "0" << d[2] << " => ";
 		else
  			std::cout << "-" << d[2] << " => ";
-		std::cout << v << " = " <<  << std::endl;
+		std::cout << v << " = " << getAproxValue(d) * v << std::endl;
 		delete [] d;
 	}
 }
