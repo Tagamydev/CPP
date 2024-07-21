@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/20 18:13:01 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/20 19:40:18 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,15 @@ void	BitcoinExchange::parse_db(char *str)
 	if (i != 2)
 		throw std::out_of_range ("Data base: hola");
 	d = checkDate(const_cast<char *>(date.c_str()));
-	v = static_cast<float>(checkFloat(value));
+	try
+	{
+		v = static_cast<float>(checkFloat(value));
+	}
+	catch (const std::exception& e)
+	{
+		delete [] d;
+		throw std::out_of_range (e.what());
+	}
 	db.insert(std::pair<int *, float>(d, v));
 }
 
@@ -325,9 +333,18 @@ void	BitcoinExchange::parse_infile(char *str)
 		if (i != 2)
 			throw std::out_of_range ("bad input => " + in);
 		d = checkDate(const_cast<char *>(date.c_str()));
-		v = static_cast<float>(checkFloat(value));
+		try
+		{
+			v = static_cast<float>(checkFloat(value));
+		}
+		catch (const std::exception& e)
+		{
+			delete [] d;
+			throw std::out_of_range (e.what());
+		}
 		if (v > 1000)
 		{
+			delete [] d;
 			throw std::out_of_range ("too large number.");
 		}
 		std::cout << d[0] << "-";
@@ -385,5 +402,13 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 
 BitcoinExchange::~BitcoinExchange()
 {
+	std::map<int *, float>::iterator	i = db.begin();
+	std::map<int *, float>::iterator	e = db.end();
 
+	while (i != e)
+	{
+		delete [] i->first;
+		i++;
+	}
+	db.clear();
 }
