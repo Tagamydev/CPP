@@ -6,7 +6,7 @@
 /*   By: samusanc <samusanc@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 14:25:07 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/21 16:00:52 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:40:51 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ RPN::RPN(std::string numbers)
 	char	*str;
 	float	first;
 	float	second;
+	float	tmp;
 	
 	str = const_cast<char *>(numbers.c_str());
 	str = strtok(str, " 	");
@@ -89,7 +90,12 @@ RPN::RPN(std::string numbers)
 	while (str)
 	{
 		if (this->isNumber(str))
-			stack.push(atof(std::string(str)));
+		{
+			tmp = atof(std::string(str));
+			if (tmp > 9)
+				throw std::out_of_range ("non valid operation");
+			stack.push(tmp);
+		}
 		else
 		{
 			if (stack.size() < 2)
