@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:13:48 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/20 19:40:18 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:51:56 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,7 +368,10 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 
 	std::getline(dataBase, dataB);
 	if (dataB != "date,exchange_rate")//exception in case bad header of data base
+	{
+		this->clear();
 		throw std::out_of_range ("Data base: bad header.");
+	}
 	// Every exception produced in the data base is handle like an program error.
 	while (dataBase)
 	{
@@ -379,12 +382,16 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 		}
 		catch (const std::exception& e)
 		{
+			this->clear();
 			throw std::out_of_range("Data base: " + std::string(e.what()));
 		}
 	}
 	std::getline(in, iN);
 	if (iN != "date | value")//exception in case bad header of in file
+	{
+		this->clear();
 		throw std::out_of_range ("Input file: bad header.");
+	}
 	// Every exception produced in the input is handle individually and not as an program error
 	while (in)
 	{
@@ -400,7 +407,7 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataBase, std::ifstream& in)
 	}
 }
 
-BitcoinExchange::~BitcoinExchange()
+void	BitcoinExchange::clear()
 {
 	std::map<int *, float>::iterator	i = db.begin();
 	std::map<int *, float>::iterator	e = db.end();
@@ -411,4 +418,9 @@ BitcoinExchange::~BitcoinExchange()
 		i++;
 	}
 	db.clear();
+}
+
+BitcoinExchange::~BitcoinExchange()
+{
+	this->clear();
 }
