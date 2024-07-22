@@ -6,7 +6,7 @@
 /*   By: samusanc <samusanc@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:17:30 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/22 13:20:01 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/22 21:37:40 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	PmergeMe::makeSecondContainer()
 		this->container2.push_back(*i);
 		i++;
 	}
-	FJMI< std::list<int> >(this->container1);
+	FJMI< std::vector<int> >(this->container2);
 	//FJMI(this->container2);
 }
 

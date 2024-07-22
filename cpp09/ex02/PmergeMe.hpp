@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:56:16 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/22 13:21:07 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/22 22:46:17 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ class	PmergeMe{
 		std::clock_t		c1_c;
 		std::clock_t		c2_c;
 };
-
 template <typename T>
-void	sortTwo(typename T::iterator &a, typename T::iterator &b)
+void	sortTwo(typename T::iterator a, typename T::iterator b)
 {
 	if (*a > *b)
 	{
@@ -87,6 +86,114 @@ void	sortPairs(T &list)
 }
 
 template <typename T>
+void	printT(T &list)
+{
+	typename T::iterator	b = list.begin();
+	typename T::iterator	e = list.end();
+
+	while (b != e)
+	{
+		std::cout << *b << " ";
+		b++;
+	}
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	insert(T &list, T &numbers)
+{
+	typename T::iterator	i = numbers.begin();
+	typename T::iterator	j = numbers.end();
+	typename T::iterator	b = list.begin();
+	typename T::iterator	e = list.end();
+
+	
+	while (i != j)
+	{
+		b = list.begin();
+		while (b != e)
+		{
+			if (*b > *i)
+			{
+				list.insert(b, *i);
+				break ;
+			}
+			++b;
+		}
+		
+		++i;
+	}
+}
+
+template <typename T>
+void	insert(T &list, int value)
+{
+	typename T::iterator	b = list.begin();
+	typename T::iterator	e = list.end();
+
+	while (b != e)
+	{
+		if (*b > value)
+		{
+			list.insert(b, value);
+			break ;
+		}
+		++b;
+	}
+}
+
+template <typename T>
+void	FJMI_1(T &list, int z)
+{
+	(void)z;
+	if (list.size() == 1)
+		return ;
+	if (list.size() == 2)
+	{
+		typename T::iterator	f = list.begin();
+		typename T::iterator	s = list.begin();
+
+		s++;
+		sortTwo<T>(f, s);
+		return ;
+	}
+	if (list.size() % 2 == 0)
+	{
+		typename T::iterator	b = list.begin();
+		typename T::iterator	e = list.end();
+		T			stacka;
+		T			stackb;
+		int			i;
+
+		i = 0;
+		sortPairs<T>(list);
+		while (b != e)
+		{
+			if (i % 2 == 0)
+				stackb.push_back(*b);	
+			else
+				stacka.push_back(*b);	
+			b++;
+			i++;
+		}
+		FJMI_1(stacka, 1);
+		FJMI_1(stackb, 1);
+		insert<T>(stacka, stackb);
+		list = stacka;
+	}
+	else
+	{
+		int	last;
+
+		last = list.back();
+		list.pop_back();
+		FJMI_1(list, 1);
+		insert<T>(list, last);
+	}
+		
+}
+
+template <typename T>
 void	FJMI(T &list)
 {
 	if (list.size() == 1)
@@ -98,11 +205,13 @@ void	FJMI(T &list)
 
 		s++;
 		sortTwo<T>(f, s);
+		return ;
 	}
 	if (list.size() % 2 == 0)
 	{
 		typename T::iterator	b = list.begin();
 		typename T::iterator	e = list.end();
+		T			stacka;
 		T			stackb;
 		int			i;
 
@@ -111,15 +220,25 @@ void	FJMI(T &list)
 		while (b != e)
 		{
 			if (i % 2 == 0)
-			{
 				stackb.push_back(*b);	
-				list.erase(b);
-			}
-			i++;
+			else
+				stacka.push_back(*b);	
 			b++;
+			i++;
 		}
-		FJMI(list);
-		FJMI(stackb);
+		std::cout << "this is stack a:" << std::endl;
+		printT(stacka);
+		std::cout << "this is stack b:" << std::endl;
+		printT(stackb);
+		FJMI_1(stacka, 1);
+		std::cout << "this is stack a after:" << std::endl;
+		printT(stacka);
+		FJMI_1(stackb, 1);
+		std::cout << "this is stack b after:" << std::endl;
+		printT(stackb);
+		std::cout << std::endl;
+		insert<T>(stacka, stackb);
+		list = stacka;
 	}
 	else
 	{
@@ -127,9 +246,12 @@ void	FJMI(T &list)
 
 		last = list.back();
 		list.pop_back();
-		FJMI(list);
+		printT(list);
+		FJMI_1(list, 1);
+		insert<T>(list, last);
 	}
 		
 }
+
 
 #endif
