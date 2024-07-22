@@ -6,7 +6,7 @@
 /*   By: samusanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 08:36:52 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/21 18:26:08 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/22 10:35:17 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	}
 	catch (const std::exception& e)
 	{
+		std::cout << e.what() << std::endl;
 
 	}
 	//std::cout << "hola mundo este es el tiempo: " << 1000.0 * (end - start) / CLOCKS_PER_SEC << std::endl;
