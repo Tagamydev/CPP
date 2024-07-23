@@ -6,7 +6,7 @@
 /*   By: samusanc <samusanc@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:17:30 by samusanc          #+#    #+#             */
-/*   Updated: 2024/07/22 21:37:40 by samusanc         ###   ########.fr       */
+/*   Updated: 2024/07/23 09:00:33 by samusanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ void	PmergeMe::makeFirstContainer()
 		i++;
 	}
 	FJMI< std::list<int> >(this->container1);
-	std::cout << "After: ";
-	printList(this->container1);
+	std::clock_t		end = std::clock();
+	std::cout << "Time to process a range of\t" << this->general.size();
+ 	std::cout << " elements with std::list\t: " << 1000.0 * (end - this->c1_c) / CLOCKS_PER_SEC << "ms" << std::endl;
 }
 
 void	PmergeMe::makeSecondContainer()
@@ -105,7 +106,9 @@ void	PmergeMe::makeSecondContainer()
 		i++;
 	}
 	FJMI< std::vector<int> >(this->container2);
-	//FJMI(this->container2);
+	std::clock_t		end = std::clock();
+	std::cout << "Time to process a range of\t" << this->general.size();
+ 	std::cout << " elements with std::vector\t: " << 1000.0 * (end - this->c2_c) / CLOCKS_PER_SEC << "ms" << std::endl;
 }
 
 PmergeMe::PmergeMe(std::string numbers)
@@ -131,8 +134,12 @@ PmergeMe::PmergeMe(std::string numbers)
 	}
 	checkDup(this->general);
 
-	std::cout << "Before: ";
+	std::cout << "Before:\t";
 	printList(this->general);
+	std::cout << "After:\t";
+	std::list<int>	tmp2(this->general);
+	tmp2.sort();
+	printT(tmp2);
 	this->makeFirstContainer();
 	this->makeSecondContainer();
 }
